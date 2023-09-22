@@ -1,5 +1,22 @@
+#include <string>
 #include <iostream>
+#include <CryptoManager.h>
 
-int main() {
-    std::cout << "Hello Easy C++ project!" << std::endl;
+using namespace std;
+
+int main()
+{
+
+    CryptoManager c;
+    string plaintext;
+
+    cout << "Plaintext: ";
+    cin >> plaintext;
+
+    string ciphertext = c.Encrypt(plaintext);
+
+    cout << "Cipher text: " << ciphertext << endl;
+    cout << "Plaintext: " << c.Decrypt(ciphertext) << endl;
+
+    return 0;
 }
