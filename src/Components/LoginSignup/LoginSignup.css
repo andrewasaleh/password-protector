@@ -18,7 +18,7 @@
 }
 
 .text{
-    color: #3c009d;
+    color: #000000;
     font-size: 48px;
     font-weight: 700;
 }
@@ -26,7 +26,7 @@
 .underline{
     width: 61px;
     height: 6px;
-    background: #3c009d;
+    background: #000000;
     border-radius: 9px;
 }
 
@@ -69,11 +69,11 @@
 }
 
 .forgot-password span{
-    color: #4c00b4;
+    color: #000000;
     cursor: pointer;
 }
 
-.sub-container{
+.submit-container{
     display: flex;
     gap: 30px;
     margin: 60px auto;
@@ -86,9 +86,14 @@
     width: 220px;
     height: 59px;
     color: #fff;
-    background: #4c00b4;
+    background: #000000;
     border-radius: 50px;
     font-size: 19px;
     font-weight: 700;
     cursor: pointer;
+}
+
+.gray{
+    background: #EAEAEA;
+    color: #676767;
 }
