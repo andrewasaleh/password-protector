@@ -1,41 +1,65 @@
-import React from 'react'
-import './LoginSignup.css'
+import React, { useState } from 'react';
+import './LoginSignup.css';
 
-import user_icon from '../Assets/person.png'
-import email_icon from '../Assets/email.png'
-import password_icon from '../Assets/password.png'
+import userIcon from '../Assets/person.png';
+import emailIcon from '../Assets/email.png';
+import passwordIcon from '../Assets/password.png';
+import logoIcon from '../Assets/logo.png';
 
 export const LoginSignup = () => {
+    const [action, setAction] = useState("Log in");
 
-    const [action,setAction] = React.useState("Login");
+    const toggleAction = () => {
+        setAction(prevAction => prevAction === "Log in" ? "Sign Up" : "Log in");
+    };
 
-  return (
-    <div className='container'>
-        <div className="header">
-            <div className="text">{action}</div>
-            <div className="underline"></div>
-        </div>
-        <div className="inputs">
-            {action==="Login"?<div></div>:<div className="input">
-            <img src={user_icon} alt="" />
-            <input placeholder="Name" type="text" />
-        </div>}
+    const handleContinue = () => {
+        window.location.href = "/homepage";
+    };
 
-        <div className="input">
-            <img src={email_icon} alt="" />
-            <input placeholder="Email" type="email" />
-        </div>
-        <div className="input">
-            <img src={password_icon} alt="" />
-            <input placeholder="Password" type="password" />
+    const headingText = action === "Log in" ? "Log in" : "Create an Account";
+    const buttonText = action === "Log in" ? "Sign Up" : "Log in";
+    const additionalText = action === "Log in" ? "Don't have an account?" : "Already have an account?";
+
+    return (
+        <div className='container'>
+            <div className="logo">
+                <img src={logoIcon} alt="Logo" />
+                <span className="logo-text">Password Protector</span>
             </div>
+            <div className="header">
+                <div className="text">{headingText}</div>
+            </div>
+            <div className="submit-container">
+                <span className="additional-text">{additionalText}</span>
+                <div className={action === "Log in" ? "submit gray" : "submit"} onClick={toggleAction}>
+                    {buttonText}
+                </div>
+            </div>
+            <div className="inputs">
+                {action === "Log in" ? null : (
+                    <div className="input">
+                        <img src={userIcon} alt="User" />
+                        <input placeholder="name" type="text" />
+                    </div>
+                )}
+                <div className="input">
+                    <img src={emailIcon} alt="Email" />
+                    <input placeholder="email address" type="email" />
+                </div>
+                <div className="input">
+                    <img src={passwordIcon} alt="Password" />
+                    <input placeholder="password" type="password" />
+                </div>
+            </div>
+            <div className="continue-button" onClick={handleContinue}>
+                Continue
+            </div>
+            {action === "Sign Up" ? null : (
+                <div className="forgot-password">
+                    <span>Forgot your password?</span>
+                </div>
+            )}
         </div>
-        {action==="Sign Up"?<div></div>:<div className="forgot-password">Forgot Password? <span>Click Here!</span></div>
-}
-        <div className="submit-container">
-            <div className={action==="Login"?"submit gray":"submit"} onClick={()=>{setAction("Sign Up")}}>Sign Up</div>
-            <div className={action==="Sign Up"?"submit gray":"submit"}onClick={()=>{setAction("Login")}}>Login</div>
-        </div>       
-    </div>
-  )
-}
+    );
+};
