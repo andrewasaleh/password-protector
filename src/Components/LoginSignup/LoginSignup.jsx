@@ -7,19 +7,14 @@ import passwordIcon from '../Assets/password.png';
 import logoIcon from '../Assets/logo.png';
 
 export const LoginSignup = () => {
-    const [action, setAction] = useState("Log in");
+    const [isLogin, setIsLogin] = useState(true);
 
-    const toggleAction = () => {
-        setAction(prevAction => prevAction === "Log in" ? "Sign Up" : "Log in");
-    };
+    const toggleAction = () => setIsLogin(!isLogin);
+    const handleContinue = () => window.location.href = "/homepage";
 
-    const handleContinue = () => {
-        window.location.href = "/homepage";
-    };
-
-    const headingText = action === "Log in" ? "Log in" : "Create an Account";
-    const buttonText = action === "Log in" ? "Sign Up" : "Log in";
-    const additionalText = action === "Log in" ? "Don't have an account?" : "Already have an account?";
+    const headingText = isLogin ? "Log in" : "Create an Account";
+    const buttonText = isLogin ? "Sign Up" : "Log in";
+    const additionalText = isLogin ? "Don't have an account?" : "Already have an account?";
 
     return (
         <div className='container'>
@@ -32,12 +27,12 @@ export const LoginSignup = () => {
             </div>
             <div className="submit-container">
                 <span className="additional-text">{additionalText}</span>
-                <div className={action === "Log in" ? "submit gray" : "submit"} onClick={toggleAction}>
+                <div className={isLogin ? "submit gray" : "submit"} onClick={toggleAction}>
                     {buttonText}
                 </div>
             </div>
             <div className="inputs">
-                {action === "Log in" ? null : (
+                {!isLogin && (
                     <div className="input">
                         <img src={userIcon} alt="User" />
                         <input placeholder="name" type="text" />
@@ -55,7 +50,7 @@ export const LoginSignup = () => {
             <div className="continue-button" onClick={handleContinue}>
                 Continue
             </div>
-            {action === "Sign Up" ? null : (
+            {isLogin && (
                 <div className="forgot-password">
                     <span>Forgot your password?</span>
                 </div>
