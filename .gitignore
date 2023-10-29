@@ -54,3 +54,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# ignores files/folders
+node_modules
+firebase.js
