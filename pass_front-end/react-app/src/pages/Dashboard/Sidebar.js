@@ -3,7 +3,10 @@ import Button from "react-bootstrap/Button";
 import { Container, Col, Row } from "react-bootstrap";
 import key from "./assets/images/key.svg";
 
-function Sidebar() {
+function Sidebar({sidebarOpen}) {
+  if(!sidebarOpen){
+    return null;
+  }
   return (
     <div className="sidebar">
       <div className="sidebar-item">Dashboard</div>
@@ -11,10 +14,10 @@ function Sidebar() {
         <img src={key} className="navIcons" alt="key" /> My Password
       </div>
       <div className="sidebar-item">Games</div>
-      <div className="sidebar-item">Streaming</div>
+      {/* <div className="sidebar-item">Streaming</div>
       <div className="sidebar-item">E-mails</div>
       <div className="sidebar-item">Payments</div>
-      <div className="sidebar-item">Security risks</div>
+      <div className="sidebar-item">Security risks</div> */}
 
       {/* <Button className="Logout" variant="outline-primary">Logout</Button>{""} */}
     </div>
