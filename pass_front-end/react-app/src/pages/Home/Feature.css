@@ -7,6 +7,16 @@
     align-items: center;
     background-color: #ffffff;
 }
+
+.s-b-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center; /* Optional for centering text */
+  }
+
+  
 .a-container{
     display: flex;
     justify-content: center;

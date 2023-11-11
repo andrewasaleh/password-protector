@@ -2,7 +2,7 @@ import React from 'react';
 import './About.css';
 import './Divider.css'; 
 import Divider from './Divider';
-
+import Footer from './Footer';
 const About = () => {
   const developerData = [
     {

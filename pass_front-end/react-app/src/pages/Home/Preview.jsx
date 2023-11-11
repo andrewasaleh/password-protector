@@ -10,7 +10,9 @@ function Preview() {
       <div id="presentation-text">
       <Divider />
         <h1>Dashboard Preview</h1>
-        <p>In-Development</p>
+        <div className='centered-text'>
+      <p>In-Development</p>
+    </div>
       </div>
       <div id="presentation" style={{ backgroundImage: `url(${previewImage})`,
        backgroundSize: 'contain', height: '768px' }}></div>

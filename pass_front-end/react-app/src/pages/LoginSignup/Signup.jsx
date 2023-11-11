@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebase';
 import './LoginSignup.css';
+import Footer from '../Home/Footer';
 
 import userIcon from '../../Assets/images/LoginSignup/person.png';
 import emailIcon from '../../Assets/images/LoginSignup/email.png';
@@ -24,32 +25,52 @@ function Signup() {
   const [password, setPassword] = useState('');
   const [reenteredPassword, setReenteredPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const [passwordMatch, setPasswordMatch] = useState(true); // Password match state
+  const [passwordMatch, setPasswordMatch] = useState(true);
+  const [passwordError, setPasswordError] = useState('');
+  const [emailError, setEmailError] = useState(''); // Add email validation error state
+
   const navigate = useNavigate();
 
-  const handleSignup = async () => {
-    if (password !== reenteredPassword) {
-      setPasswordMatch(false);
-      return;
+  const validatePassword = () => {
+    if (password.length < 6) {
+      setPasswordError('Password must be at least 6 characters long.');
+      return false;
+    } else if (password !== reenteredPassword) {
+      setPasswordError('Passwords do not match.');
+      return false;
     } else {
-      setPasswordMatch(true);
+      setPasswordError('');
+      return true;
+    }
+  };
+
+  const validateEmail = () => {
+    const emailRegex = /^\S+@\S+\.\S+$/;
+    if (!emailRegex.test(email)) {
+      setEmailError('Invalid email format.');
+      return false;
+    } else {
+      setEmailError('');
+      return true;
+    }
+  };
+
+  const handleSignup = async () => {
+    if (!validateEmail() || !validatePassword()) {
+      return;
     }
 
     try {
-      // Use Firebase createUserWithEmailAndPassword function to create a new user
       await createUserWithEmailAndPassword(auth, email, password);
-
-      // Optionally, you can add more user details to Firestore or another database here
-
-      navigate('/homepage'); // Redirect to the Dashboard (homepage temp to limit errors) after a successful signup
+      navigate('/Dashboard');
     } catch (error) {
-      console.error("Error signing up:", error.message);
+      console.error('Error signing up:', error.message);
     }
-  }
+  };
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
-  }
+  };
 
   return (
     <div style={bodyStyle}>
@@ -59,8 +80,8 @@ function Signup() {
           <div className="description">Create a new account to get started.</div>
         </div>
         <div className="inputs">
-        <authlabel>Full Name</authlabel>
-          <div className={`input ${!passwordMatch ? 'input-error' : ''}`}>
+          <authlabel>Full Name</authlabel>
+          <div className={`input ${passwordError ? 'input-error' : ''}`}>
             <img src={userIcon} alt="User" />
             <input
               type="text"
@@ -70,7 +91,7 @@ function Signup() {
             />
           </div>
           <authlabel>Email</authlabel>
-          <div className={`input ${!passwordMatch ? 'input-error' : ''}`}>
+          <div className={`input ${passwordError ? 'input-error' : ''}`}>
             <img src={emailIcon} alt="Email" />
             <input
               type="email"
@@ -78,33 +99,41 @@ function Signup() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
+            {emailError && <div className="error-message">{emailError}</div>} {/* Display email validation error */}
           </div>
           <authlabel>Password</authlabel>
-          <div className={`input ${!passwordMatch ? 'input-error' : ''}`}>
+          <div className={`input ${passwordError ? 'input-error' : ''}`}>
             <img src={passwordIcon} alt="Password" />
             <input
-              type={showPassword ? "text" : "password"}
+              type={showPassword ? 'text' : 'password'}
               placeholder="Enter Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
             <div className="password-toggle" onClick={togglePasswordVisibility}>
-              <img src={showPassword ? hidePasswordIcon : showPasswordIcon} alt="Toggle Password" />
+              <img
+                src={showPassword ? hidePasswordIcon : showPasswordIcon}
+                alt="Toggle Password"
+              />
             </div>
           </div>
           <authlabel>Confirm Password</authlabel>
-          <div className={`input ${!passwordMatch ? 'input-error' : ''}`}>
+          <div className={`input ${passwordError ? 'input-error' : ''}`}>
             <img src={passwordIcon} alt="Password" />
             <input
-              type={showPassword ? "text" : "password"}
+              type={showPassword ? 'text' : 'password'}
               placeholder="Re-enter Password"
               value={reenteredPassword}
               onChange={(e) => setReenteredPassword(e.target.value)}
             />
             <div className="password-toggle" onClick={togglePasswordVisibility}>
-              <img src={showPassword ? hidePasswordIcon : showPasswordIcon} alt="Toggle Password" />
+              <img
+                src={showPassword ? hidePasswordIcon : showPasswordIcon}
+                alt="Toggle Password"
+              />
             </div>
           </div>
+          {passwordError && <div className="error-message">{passwordError}</div>}
         </div>
         <div className="continue-button" onClick={handleSignup}>
           Create an account
@@ -113,6 +142,7 @@ function Signup() {
           Already have an account? <Link to="/login">Login</Link>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

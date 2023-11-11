@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from '../../firebase';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { collection, addDoc } from 'firebase/firestore';
+import app from '../../App.js'; // Import your Firebase configuration
 import emailIcon from '../../Assets/images/LoginSignup/email.png';
 import passwordIcon from '../../Assets/images/LoginSignup/password.png';
-import './LoginSignup.css';
+import './LoginSignup.css'; // Include your CSS styles
+import Footer from '../Home/Footer.jsx';
 
 const bodyStyle = {
   margin: 0,
@@ -21,10 +23,21 @@ function Login() {
 
   const handleLogin = async () => {
     try {
+      const auth = getAuth(app);
       await signInWithEmailAndPassword(auth, email, password);
-      navigate('/homepage'); // Redirect to the homepage after successful login
+      console.log('Login successful');
+
+      // Access Firestore and add user data
+      const db = collection(app.firestore(), 'users'); // Replace 'users' with your Firestore collection name
+      const userDoc = {
+        email,
+        // Add other user-related data here
+      };
+      await addDoc(db, userDoc);
+
+      navigate('/Dashboard'); // Redirect to the homepage after a successful login
     } catch (error) {
-      console.error("Error logging in:", error.message);
+      console.error('Error logging in:', error.message);
     }
   }
 
@@ -36,7 +49,7 @@ function Login() {
           <div className="description">Your dashboard is just a click away!</div>
         </div>
         <div className="inputs">
-        <authlabel>Email</authlabel>
+          <label>Email</label>
           <div className="input">
             <img src={emailIcon} alt="User" />
             <input
@@ -46,7 +59,7 @@ function Login() {
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
-          <authlabel>Password</authlabel>
+          <label>Password</label>
           <div className="input">
             <img src={passwordIcon} alt="Password" />
             <input
@@ -63,9 +76,7 @@ function Login() {
         <div className="redirect-signup">
           Don't have an account? <Link to="/signup">Sign Up</Link>
         </div>
-        {/* <div className="forgot-password">
-          <span>Forgot your password?</span>
-        </div> */}
+        <Footer />
       </div>
     </div>
   );
