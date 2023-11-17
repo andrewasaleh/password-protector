@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import { collection, addDoc } from 'firebase/firestore';
-import app from '../../App.js'; // Import your Firebase configuration
+import { Link, useNavigate } from 'react-router-dom';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../firebase';
 import emailIcon from '../../Assets/images/LoginSignup/email.png';
 import passwordIcon from '../../Assets/images/LoginSignup/password.png';
-import './LoginSignup.css'; // Include your CSS styles
-import Footer from '../Home/Footer.jsx';
+import './LoginSignup.css'; 
+
 
 const bodyStyle = {
   margin: 0,
@@ -16,30 +15,26 @@ const bodyStyle = {
   alignItems: 'center',
 };
 
-function Login() {
+const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState(null); 
   const navigate = useNavigate();
 
-  const handleLogin = async () => {
-    try {
-      const auth = getAuth(app);
-      await signInWithEmailAndPassword(auth, email, password);
-      console.log('Login successful');
+  const login = (e) => {
+    e.preventDefault();
 
-      // Access Firestore and add user data
-      const db = collection(app.firestore(), 'users'); // Replace 'users' with your Firestore collection name
-      const userDoc = {
-        email,
-        // Add other user-related data here
-      };
-      await addDoc(db, userDoc);
-
-      navigate('/Dashboard'); // Redirect to the homepage after a successful login
-    } catch (error) {
-      console.error('Error logging in:', error.message);
-    }
-  }
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        console.log(userCredential);
+        navigate('/dashboard');
+      })
+      .catch((error) => {
+        
+        setError(error.message);
+        console.log(error);
+      });
+  };
 
   return (
     <div style={bodyStyle}>
@@ -49,37 +44,40 @@ function Login() {
           <div className="description">Your dashboard is just a click away!</div>
         </div>
         <div className="inputs">
-          <label>Email</label>
-          <div className="input">
-            <img src={emailIcon} alt="User" />
-            <input
-              type="email"
-              placeholder="Enter Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-          <label>Password</label>
-          <div className="input">
-            <img src={passwordIcon} alt="Password" />
-            <input
-              type="password"
-              placeholder="Enter Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
+          <form onSubmit={login}>
+            <name-label>Email</name-label>
+            <div className="input">
+              <img src={emailIcon} alt="Email" className="icon" />
+              <input
+                type="email"
+                placeholder="Enter Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <name-label>Password</name-label>
+            <div className="input">
+              <img src={passwordIcon} alt="Password" className="icon" />
+              <input
+                type="password"
+                placeholder="Enter Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+            {/* Display error message if there's an error */}
+            {error && <div className="error-message">{error}</div>}
+          </form>
         </div>
-        <div className="continue-button" onClick={handleLogin}>
+        <div className="continue-button" onClick={login}>
           Sign in
         </div>
         <div className="redirect-signup">
           Don't have an account? <Link to="/signup">Sign Up</Link>
         </div>
-        <Footer />
       </div>
     </div>
   );
-}
+};
 
 export default Login;
