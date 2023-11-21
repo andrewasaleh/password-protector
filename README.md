@@ -15,9 +15,6 @@ This repository is dedicated to the development of a password projector project 
 ## Introduction
 The motivation behind Password Protector is rooted in the recognition of the vulnerabilities that users face in their online interactions. Weak passwords, password reuse, and inadequate storage practices contribute to a heightened risk of security breaches. This project aims to empower users with a secure and user-friendly password manager that not only stores credentials but also encourages best practices for creating and managing passwords.
 
-Deployment/Testing
-cd in src folder for deployment and testing
-
 ## Features
 - Secure Password Storage
 Password Guardian employs advanced encryption techniques to securely store and manage user credentials, ensuring that sensitive information remains confidential.
