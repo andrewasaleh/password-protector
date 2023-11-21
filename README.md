@@ -3,7 +3,7 @@ Deployed with firebase
 https://password-protectors.web.app/
 
 ## Overview
-This repository is dedicated to the development of a password projector project for CPSC 362 Software Engineering at Cal State Fullerton Unviversity. The goal of this project is to manage and protect a users passwords.
+This repository is dedicated to the development of a password projector project for CPSC 362 Software Engineering at Cal State Fullerton University. The goal of this project is to manage and protect a users passwords.
 
 ## Table of Contents
 - [Introduction](#introduction)
