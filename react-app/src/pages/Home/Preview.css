@@ -1,0 +1,58 @@
+#Preview {
+    padding-top: 0;
+    width: 100%;
+    height: auto; 
+    background-repeat: no-repeat;
+    background-size: contain; 
+    background-position: center;
+    background-image: url('../../Assets/images/home/preview.png');
+    text-align: center;
+  }
+  #presentation {
+    padding-top: 0;
+    width: 100%;
+    height: auto;
+    background-repeat: no-repeat; 
+    background-size: contain;
+    background-position: center;
+    background-image: url('../../Assets/images/home/preview.png');
+    text-align: center;
+  }
+  
+h1 {
+    font-size: 2rem;
+  }
+  
+p {
+    font-size: 1.2rem;
+    margin: 10px 0;
+  }
+  
+  
+h1 {
+    font-size: 2rem; 
+}
+
+p {
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+}
+
+.image-container img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.centered-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}

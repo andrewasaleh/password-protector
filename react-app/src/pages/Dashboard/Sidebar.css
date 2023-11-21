@@ -1,0 +1,26 @@
+.sidebar {
+    background-color: #252b43;
+    color: #ffffff;
+    width: 200px;
+    height: 74vh; 
+    position: relative;
+    top: 20px;
+    left: 0;
+    padding-top: 0px;
+  }
+  
+  .sidebar-item {
+    padding: 15px;
+    border-bottom: 1px solid #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .sidebar-item:hover {
+    background-color: #394369;
+  }
+  
+  .sidebar-item.active {
+    background-color: #394369;
+  }
+  

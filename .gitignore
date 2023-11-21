@@ -57,4 +57,4 @@ yarn-error.log*
 
 # ignores files/folders
 node_modules
-firebase.js
+.env
