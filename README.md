@@ -38,12 +38,6 @@ git clone https://github.com/your-username/password-projector.git
 - npm install axios
 - npm install react-bootstrap bootstrap
 - npm install react-router-dom
-
-Updates (Not Recommended - Replace "latest" with the specific version you want if needed.)
-- npm install react@latest 
-- npm install uuid@latest
-- npm install har-validator@latest
-- npm install --save-dev @babel/plugin-proposal-private-property-in-object
   
 Firebase Commands 
 - cd in src folder for both deployment and testing
@@ -52,5 +46,11 @@ Firebase Commands
 - npm run build
 - firebase deploy 
 - firebase --version
+
+Updates (Not Recommended - Replace "latest" with the specific version you want if needed.)
+- npm install react@latest 
+- npm install uuid@latest
+- npm install har-validator@latest
+- npm install --save-dev @babel/plugin-proposal-private-property-in-object
 
 ## License
