@@ -58,3 +58,7 @@ yarn-error.log*
 # ignores files/folders
 node_modules
 .env
+package-lock.json
+package.json
+react-app/package-lock.json
+react-app/package.json
