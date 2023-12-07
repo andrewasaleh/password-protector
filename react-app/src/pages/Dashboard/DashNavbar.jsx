@@ -1,35 +1,43 @@
-// DashNavbar.js
-import React from "react";
-import logo from "../../Assets/images/home/logo.png";
-import justify from "../../Assets/images/Dashboard/justify.svg";
-import AuthDetails from '../LoginSignup/AuthDetails'; 
+// DashNavbar.jsx
+import React, { useState } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faKey } from '@fortawesome/free-solid-svg-icons';
+import AuthDetails from '../LoginSignup/AuthDetails';
+import PasswordForm from './PasswordForm';
+import PasswordGenerator from './PasswordGenerator'; // Import PasswordGenerator
 import "./DashNavbar.css";
+import logo from '../../Assets/images/home/logo.png'; // Update the path to your logo image
 
-function DashNavbar({ toggleSidebar, isSmallScreen }) {
-  if (isSmallScreen) {
-    return null;
-  }
+function DashNavbar({ isSmallScreen, onTogglePasswordGenerator }) {
+  const [showPasswordForm, setShowPasswordForm] = useState(false);
+
+  const handleOpenPasswordForm = () => {
+    setShowPasswordForm(true);
+  };
+
+  const handleToggleGenerator = () => {
+    // Toggle the PasswordGenerator in the parent component
+    onTogglePasswordGenerator();
+  };
 
   return (
-    <div className="DashNavbar">
-      <div>
-        <img src={logo} className="logo" alt="company Logo" />
-        <button
-          type="button"
-          className="showSidebar btn btn-outline-secondary"
-          onClick={toggleSidebar}
-        >
-          <img src={justify} alt="Toggle Sidebar" />
-        </button>
+    <header className="DashNavbar">
+      <div className="logo-container">
+        <img src={logo} alt="Logo" className="logo" />
       </div>
-      <input type="search" placeholder="Search for a service or password" />
 
-      <div>
-        {/* Include the AuthDetails component */}
-        <AuthDetails />
-        {/* Add other components as needed */}
+      <div className="passwordgenerator-icon">
+      {/* Add an icon to toggle PasswordGenerator */}
+      <FontAwesomeIcon icon={faKey} onClick={handleToggleGenerator} className="password-generator-icon" />
       </div>
-    </div>
+
+      <div className="passwordgenerator-icon">
+      <AuthDetails />
+      </div>
+
+      {/* Render PasswordForm if showPasswordForm is true */}
+      {showPasswordForm && <PasswordForm onClose={() => setShowPasswordForm(false)} />}
+    </header>
   );
 }
 

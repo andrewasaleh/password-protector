@@ -1,7 +1,8 @@
 import React from 'react';
 import './About.css';
-import './Divider.css'; 
-import Divider from './Divider';
+import Separator from './Separator';
+import Footer from './Footer';
+
 const About = () => {
   const developerData = [
     {
@@ -14,15 +15,15 @@ const About = () => {
     },
     {
       name: 'Kevin Tran',
-      title: 'Backend Developer',
-      description: 'Experienced in building scalable and secure server-side applications.',
+      title: 'UX Tester',
+      description: ' Ensures seamless navigation and user satisfaction through testing and feedback. ',
       github: '',
       linkedin: '',
       profileImage: 'https://avatars.githubusercontent.com/u/143236084?v=4', 
     },
     {
       name: 'Qing Gao',
-      title: 'Full Stack Developer',
+      title: 'UI/UX Designer',
       description: 'Passionate about creating responsive and interactive web apps.',
       github: '',
       linkedin: '',
@@ -41,9 +42,9 @@ const About = () => {
   return (
     <div id="about-section">
       <div>
-      <Divider />
+      <Separator />
         <h1>About Us</h1>
-        <p className="description">Students at CSUF (California State University, Fullerton) majoring in computer science are 
+        <p className="about-description">Students at CSUF (California State University, Fullerton) majoring in computer science are 
         collaborating to develop a web-based password management application using a technology stack that 
         includes React for the front-end, JavaScript for scripting, CSS for styling, and Firebase API for various features.</p>
         <div className="developer-list">
@@ -65,9 +66,9 @@ const About = () => {
               </div>
             </div>
           ))}
+          <Footer />
         </div>
       </div>
-      <Divider />
     </div>
   );
 };

@@ -3,12 +3,13 @@
     flex-direction: column;
     margin: auto;
     margin-top: 200px; 
-    width: 350px; 
+    width: 450px; 
     background: #ffffff;
-    border-radius: 5px;
+    border-radius: 20px;
     align-items: center;
     justify-content: center;
     padding: 20px;
+    border: 1px solid #747775;
   }
   
 .header {
@@ -31,7 +32,7 @@
 }
 
 .redirect-login {
-    margin-top: 10px;
+    margin-top: 60px;
     text-align: center;
 }
 
@@ -45,7 +46,7 @@
 }
   
 .redirect-signup {
-    margin-top: 10px;
+    margin-top: 60px;
     text-align: center;
 }
 
@@ -73,7 +74,7 @@
     height: 50px;
     background: #ffffff;
     border: 1px solid #2176ff4b;
-    border-radius: 6px;
+    border-radius: 4px;
 }
   
 .input img {
@@ -95,10 +96,11 @@ name-label {
   width: 200px;
   text-align: left;
   margin-bottom: 0px;
-  color: #2176ff;
+  color: #156bf4;
   font-size: 14px;
   font-weight: 600;
   display: block; 
+  margin-top: 20px;
 }
 
   .forgot-password {
@@ -154,13 +156,13 @@ name-label {
     font-weight: 500;
     width: 370px;
     height: 50px;
-    border: none;
-    border-radius: 6px;
+    border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 1px solid #747775;
 }
 
 .continue-button:hover {
@@ -212,3 +214,126 @@ name-label {
   box-shadow: 0 0 5px #ff0000; 
 }
 
+
+/* Google Sign In Button */
+.gsi-material-button {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -webkit-appearance: none;
+  background-color: WHITE;
+  background-image: none;
+  border: 1px solid #747775;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #1f1f1f;
+  cursor: pointer;
+  font-family: 'Roboto', arial, sans-serif;
+  font-size: 16px;
+  height: 50px;
+  letter-spacing: 0.25px;
+  outline: none;
+  overflow: hidden;
+  padding: 0 98px;
+  position: relative;
+  text-align: center;
+  -webkit-transition: background-color .218s, border-color .218s, box-shadow .218s;
+  transition: background-color .218s, border-color .218s, box-shadow .218s;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: auto;
+  max-width: 400px;
+  min-width: min-content;
+}
+
+.gsi-material-button .gsi-material-button-icon {
+  height: 20px;
+  margin-right: 12px;
+  min-width: 20px;
+  width: 20px;
+}
+
+.gsi-material-button .gsi-material-button-content-wrapper {
+  -webkit-align-items: center;
+  align-items: center;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  height: 100%;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+}
+
+.gsi-material-button .gsi-material-button-contents {
+  -webkit-flex-grow: 1;
+  flex-grow: 1;
+  font-family: 'Roboto', arial, sans-serif;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: top;
+}
+
+.gsi-material-button .gsi-material-button-state {
+  -webkit-transition: opacity .218s;
+  transition: opacity .218s;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.gsi-material-button:disabled {
+  cursor: default;
+  background-color: #ffffff61;
+  border-color: #1f1f1f1f;
+}
+
+.gsi-material-button:disabled .gsi-material-button-contents {
+  opacity: 38%;
+}
+
+.gsi-material-button:disabled .gsi-material-button-icon {
+  opacity: 38%;
+}
+
+.gsi-material-button:not(:disabled):active .gsi-material-button-state, 
+.gsi-material-button:not(:disabled):focus .gsi-material-button-state {
+  background-color: #303030;
+  opacity: 12%;
+}
+
+.gsi-material-button:not(:disabled):hover {
+  -webkit-box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .30), 0 1px 3px 1px rgba(60, 64, 67, .15);
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .30), 0 1px 3px 1px rgba(60, 64, 67, .15);
+}
+
+.gsi-material-button:not(:disabled):hover .gsi-material-button-state {
+  background-color: #303030;
+  opacity: 8%;
+}
+
+.signin-options-text {
+  text-align: center;
+  font-size: 14px;
+  color: #000000; /* Adjust the color as needed */
+  margin: 10px 10px; /* Adjust the margin as needed */
+  position: relative;
+  font-weight: bold; /* Add font weight to make the text bold */
+}
+
+.signin-options-text::before,
+.signin-options-text::after {
+  content: '';
+  display: inline-block;
+  width: 163px; /* Adjust the width of the lines */
+  border-top: 1px solid #00000070; /* Adjust the color as needed */
+  margin: 0 10px; /* Adjust the distance between the text and lines */
+}

@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
-import { auth } from '../../firebase';
+import { collection, doc, setDoc } from 'firebase/firestore';
+import { auth, db } from '../../firebase';
 import './LoginSignup.css';
+
+import userIcon from '../../Assets/images/LoginSignup/user-icon.png'; // Add the correct path to your user icon
+import emailIcon from '../../Assets/images/LoginSignup/email-icon.png'; // Add the correct path to your email icon
+import passwordIcon from '../../Assets/images/LoginSignup/password-icon.png'; // Add the correct path to your password icon
 
 import showPasswordIcon from '../../Assets/images/LoginSignup/show-image.png';
 import hidePasswordIcon from '../../Assets/images/LoginSignup/hide-image.png';
@@ -27,7 +32,11 @@ function Signup() {
   const [passwordLengthError, setPasswordLengthError] = useState(false);
   const navigate = useNavigate();
 
-  
+  // Function to toggle password visibility
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   const signup = async (e) => {
     e.preventDefault();
 
@@ -60,14 +69,22 @@ function Signup() {
         displayName: fullName,
       });
 
+      // Save the user's UID in Firestore
+      const userDocRef = doc(db, 'users', userCredential.user.uid);
+      await setDoc(userDocRef, {
+        uid: userCredential.user.uid,
+        fullName: fullName,
+        email: email,
+        // Add more fields as needed
+      });
+
       navigate('/dashboard');
     } catch (error) {
+      if (error.code === 'auth/email-already-in-use') {
+        setEmailExists(true);
+      }
       console.error(error);
     }
-  };
-
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
   };
 
   return (
@@ -79,8 +96,11 @@ function Signup() {
         </div>
         <div className="inputs">
           <form onSubmit={signup}>
-            <name-label>Full Name</name-label>
+            <name-label>
+               Full Name
+            </name-label>
             <div className="input">
+            <img src={userIcon} alt="User Icon" />
               <input
                 type="text"
                 placeholder="Enter Full Name"
@@ -88,8 +108,11 @@ function Signup() {
                 onChange={(e) => setFullName(e.target.value)}
               />
             </div>
-            <name-label>Email</name-label>
+            <name-label>
+               Email
+            </name-label>
             <div className={`input ${emailExists ? 'email-error' : ''}`}>
+            <img src={emailIcon} alt="Email Icon" />
               <input
                 type="email"
                 placeholder="Enter Email"
@@ -100,13 +123,11 @@ function Signup() {
                 }}
               />
             </div>
-            {emailExists && (
-              <div className="error-box">
-                Email already exists. Please use a different email.
-              </div>
-            )}
-            <name-label>Password</name-label>
+            <name-label>
+               Password
+            </name-label>
             <div className={`input ${!passwordMatch || passwordLengthError ? 'input-error' : ''}`}>
+            <img src={passwordIcon} alt="Password Icon" />
               <input
                 type={showPassword ? 'text' : 'password'}
                 placeholder="Enter Password"
@@ -124,6 +145,7 @@ function Signup() {
             )}
             <name-label>Confirm Password</name-label>
             <div className={`input ${!passwordMatch ? 'input-error' : ''}`}>
+            <img src={passwordIcon} alt="Password Icon" />
               <input
                 type={showPassword ? 'text' : 'password'}
                 placeholder="Re-enter Password"

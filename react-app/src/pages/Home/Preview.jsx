@@ -1,21 +1,20 @@
 import React from 'react';
 import './Preview.css';
 import previewImage from '../../Assets/images/home/preview.png';
-import './Divider.css'; 
-import Divider from './Divider';
+import Separator from './Separator';
 
 function Preview() {
   return (
     <div>
       <div id="presentation-text">
-      <Divider />
+      <Separator />
         <h1>Dashboard Preview</h1>
         <div className='centered-text'>
       <p>In-Development</p>
     </div>
       </div>
       <div id="presentation" style={{ backgroundImage: `url(${previewImage})`,
-       backgroundSize: 'contain', height: '768px' }}></div>
+       backgroundSize: 'contain' }}></div>
     </div>
   );
 }

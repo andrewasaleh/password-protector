@@ -8,8 +8,8 @@ import Header from './pages/Home/Opening';
 import Feature from './pages/Home/Feature';
 import About from './pages/Home/About';
 import Presentation from './pages/Home/Preview';
-import Footer from './pages/Home/Footer'; 
 import DashboardPage from './pages/Dashboard/DashboardPage';
+
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -37,7 +37,6 @@ function App() {
           />
           <Route path="/dashboard/*" element={<DashboardLayout />} />
         </Routes>
-        <Footer />
       </Router>
     </div>
   );

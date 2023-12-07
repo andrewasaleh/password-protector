@@ -1,26 +1,112 @@
 .sidebar {
-    background-color: #252b43;
-    color: #ffffff;
-    width: 200px;
-    height: 74vh; 
-    position: relative;
-    top: 20px;
-    left: 0;
-    padding-top: 0px;
-  }
-  
-  .sidebar-item {
-    padding: 15px;
-    border-bottom: 1px solid #ffffff;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .sidebar-item:hover {
-    background-color: #394369;
-  }
-  
-  .sidebar-item.active {
-    background-color: #394369;
-  }
-  
+  background-color: #141414; /* Set your preferred background color #1c4e80*/
+  color: #ffffff; /* Set your preferred text color */
+  width: 250px; /* Set the width of the sidebar */
+  height: 100vh; /* Make the sidebar take the full height */
+  overflow-y: auto; /* Add scroll if content exceeds height */
+  border-right: 1px solid #000000; /* Add a vertical line on the right side */
+}
+
+.sidebar-item {
+  align-items: center; /* Center items vertically */
+  padding: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: left; /* Align text to the left */
+  height: 70px; /* Set the height of the sidebar item */
+  border-bottom: 1px solid #ffffff; /* Add a border between items */
+}
+
+.sidebar-item:hover {
+  background-color: #3784ff2c; /* Set the background color on hover */
+}
+
+.search-bar-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px; /* Adjust the padding as needed */
+  border-right: 1px solid #000000; /* Add a vertical line on the right side */
+}
+
+.search-bar {
+  flex: 1;
+  padding: 15px; /* Adjust the padding as needed */
+}
+
+.add-password-button img {
+  width: 35px; /* Adjust the width as needed */
+  height: 35px; 
+}
+
+.sidebar-item {
+  cursor: pointer;
+}
+
+.site-name,
+.email {
+  display: block; /* Ensure that both siteName and email are displayed as block-level elements */
+}
+
+.site-name {
+  font-weight: bold; /* Optional: Make the site name bold or customize as needed */
+}
+
+.email {
+  color: #cecece; /* Optional: Customize the color of the email for better differentiation */
+}
+
+.add-password-button svg {
+  width: 50px; /* Adjust the width as needed */
+  height: 50px; /* Adjust the height as needed */
+  fill: #2176ff; /* Adjust the fill color as needed */
+  padding: 10px;
+  transition: fill 0.3s ease; /* Add a transition effect */
+}
+
+.add-password-button:hover svg {
+  fill: #0051ff; /* Set the color for the hover state */
+}
+
+button.add-password-button {
+  background-color: transparent !important;
+  border: none !important;
+  cursor: pointer;
+  padding: 0 !important;
+}
+
+button.add-password-button {
+  fill: none !important;
+  stroke: #00000000 !important; /* Adjust the stroke color as needed */
+}
+
+.sidebar-item {
+  position: relative;
+  /* Add your existing styles for sidebar-item */
+}
+
+.copy-icon-container {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  /* Adjust additional styling as needed */
+}
+
+.copy-message {
+  background-color: #007bff; /* Green background color */
+  color: #fff; /* White text color */
+  padding: 10px; /* Padding around the message */
+  border-radius: 5px; /* Rounded corners */
+  position: fixed; /* Fixed position to stay at the top */
+  top: 20px; /* Distance from the top */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Center horizontally */
+  z-index: 1000; /* Ensure it appears above other elements */
+  animation: fadeOut 4s ease-in-out; /* Fade out animation over 3 seconds */
+  font-weight: bold;
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}

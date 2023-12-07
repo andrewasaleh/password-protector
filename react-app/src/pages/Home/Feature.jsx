@@ -2,10 +2,9 @@ import React from 'react';
 import featureimage from '../../Assets/images/home/feature_1.png';
 import featureimage1 from '../../Assets/images/home/feature_2.png';
 import featureimage2 from '../../Assets/images/home/feature_3.png';
+import Separator from './Separator';
 import './Feature.css';
 import './Media.css';
-import './Divider.css'; 
-import Divider from './Divider';
 
 
 function FeatureBox(props) {
@@ -24,7 +23,7 @@ function FeatureBox(props) {
 function Feature() {
   return (
     <div id='features'>
-        <Divider />
+      <Separator />
        <h1>Key Features</h1>
       <div className='a-container'>
         <FeatureBox

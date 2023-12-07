@@ -1,23 +1,24 @@
-import React, { createContext, useContext, useState } from 'react';
+import React from 'react';
+import { AuthProvider, useAuth } from './AuthContext';
 
-const AuthContext = createContext();
-
-export const AuthProvider = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  const login = () => {
-    setIsAuthenticated(true);
-  };
-
-  const logout = () => {
-    setIsAuthenticated(false);
-  };
-
+const AuthContext = () => {
   return (
-    <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
-      {children}
-    </AuthContext.Provider>
+    <AuthProvider>
+      <ChildComponent />
+    </AuthProvider>
   );
 };
 
-export const useAuth = () => useContext(AuthContext);
+export default AuthContext;
+
+const ChildComponent = () => {
+  const { isAuthenticated, login, logout } = useAuth();
+
+  return (
+    <div>
+      <p>Is Authenticated: {isAuthenticated ? 'Yes' : 'No'}</p>
+      <button onClick={login}>Login</button>
+      <button onClick={logout}>Logout</button>
+    </div>
+  );
+};

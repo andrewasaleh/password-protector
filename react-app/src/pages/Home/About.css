@@ -66,12 +66,12 @@
     background-color: #0051ff; 
   }
 
-  .description {
-    font-size: 16px;
+  .about-description {
+    font-size: 1rem;
     color: #555;
     margin: 20px auto;
-    max-width: 1100px; 
     text-align: center;
+    width: 80%; 
   }
 
   h1 {
