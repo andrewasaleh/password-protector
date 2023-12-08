@@ -2,7 +2,7 @@
 
 #main {
   width: 100%;
-  height: 100vh;
+  height: 1200px;
   position: relative;
   background-repeat: no-repeat;
   background-position: center;
@@ -14,6 +14,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  z-index: 1; /* Set a lower z-index value */
 }
 
 .background-image {
@@ -37,7 +38,6 @@
   max-width: 700px; /* Set a maximum width */
   position: absolute;
   left: 50%;
-  top: 30%;
   transform: translate(-50%, -50%);
 }
 
@@ -113,13 +113,17 @@
 /* Media Query for smaller screens */
 @media screen and (max-width: 768px) {
   .name h1 {
-    padding-top: 20%;
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
 
   .cv-btn {
     width: 120px;
     height: 40px;
     font-size: 0.9rem;
+  }
+
+  #main {
+    width: 100%;
+    height: 820px;
   }
 }
