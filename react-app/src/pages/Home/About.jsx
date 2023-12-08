@@ -57,12 +57,12 @@ const About = () => {
               <h3>{developer.title}</h3>
               <p className="developer-description">{developer.description}</p>
               <div className="buttons">
-                <a href={developer.github} target="_blank" rel="noopener noreferrer">
+                {/* <a href={developer.github} target="_blank" rel="noopener noreferrer">
                   GitHub
                 </a>
                 <a href={developer.linkedin} target="_blank" rel="noopener noreferrer">
                   LinkedIn
-                </a>
+                </a> */}
               </div>
             </div>
           ))}

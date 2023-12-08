@@ -18,7 +18,7 @@ h1 {
   background-position: center;
   background-image: url('../../Assets/images/home/preview.png');
   background-repeat: no-repeat; /* Ensure the background image is not repeated */
-  height: 300px; /* Set a default height for larger screens */
+  height: 500px; /* Set a default height for larger screens */
 
   /* Mobile support */
   @media (max-width: 768px) {
@@ -32,10 +32,6 @@ h1 {
 @media (max-width: 768px) {
   h1 {
     font-size: 1.5rem; /* Adjust font size for smaller screens */
-  }
-
-  #presentation {
-    height: 200px; /* Adjust height for smaller screens */
   }
 
   .centered-text p {

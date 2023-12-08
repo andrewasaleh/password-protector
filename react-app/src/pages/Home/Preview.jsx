@@ -10,7 +10,6 @@ function Preview() {
       <Separator />
         <h1>Dashboard Preview</h1>
         <div className='centered-text'>
-      <p>In-Development</p>
     </div>
       </div>
       <div id="presentation" style={{ backgroundImage: `url(${previewImage})`,

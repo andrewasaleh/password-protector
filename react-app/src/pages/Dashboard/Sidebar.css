@@ -64,7 +64,7 @@
 }
 
 .add-password-button:hover svg {
-  fill: #0051ff; /* Set the color for the hover state */
+  fill: #0015ff; /* Set the color for the hover state */
 }
 
 button.add-password-button {
@@ -93,10 +93,10 @@ button.add-password-button {
 }
 
 .copy-message {
-  background-color: #007bff; /* Green background color */
-  color: #fff; /* White text color */
-  padding: 10px; /* Padding around the message */
-  border-radius: 5px; /* Rounded corners */
+  background-color: #007bff; 
+  color: #fff; 
+  padding: 10px; 
+  border-radius: 5px; 
   position: fixed; /* Fixed position to stay at the top */
   top: 20px; /* Distance from the top */
   left: 50%; /* Center horizontally */
