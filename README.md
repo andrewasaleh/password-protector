@@ -54,3 +54,9 @@ Updates (Not Recommended - Replace "latest" with the specific version you want i
 - npm install --save-dev @babel/plugin-proposal-private-property-in-object
 
 ## License
+Icons by Icons8 Icons
+Vecteezy backgrounds by Vecteezy.com
+
+Firebase API: Credits to Firebase for providing cloud services.
+Firestore Database: Firestore Database is used for storing and managing data in this project.
+Firebase Authentication: This project utilizes Firebase Authentication services for user authentication.
