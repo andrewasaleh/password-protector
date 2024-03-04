@@ -1,4 +1,4 @@
-# Password Protector Project
+# password-protector project
 Deployed with firebase
 https://password-protectors.web.app/
 
